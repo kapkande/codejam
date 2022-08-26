@@ -449,7 +449,7 @@ function showNormalLevel(wichBlueCards, wichBrownCards, wichGreenCards){
         while (arrForNormelLevelBrown.length < wichBrownCards) {
     
         let choiceArr = Math.floor(Math.random() * (3))
-        console.log(choiceArr);
+        
         if (choiceArr == 0){
             random = Math.floor(Math.random() * arrEasyCardsBrown.length)
             activeArrey = arrEasyCardsBrown
