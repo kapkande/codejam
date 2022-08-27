@@ -13,14 +13,6 @@ let activeBoss
 
 
 
-
-
-
-
-
-
-
-
 const BossTarget = (even) => {
     const target = even.target;
 
@@ -74,7 +66,7 @@ function difficultiesBox() {
 
     } else document.querySelector('.difficulties').classList.remove('difficulties-active')
     reset()
-    
+
 }
 bossAzathoth.addEventListener('click', BossTarget);
 bossCthulhu.addEventListener('click', BossTarget);
@@ -105,7 +97,7 @@ const BossTarget1 = (even) => {
 
     document.querySelector(`.${onClik[0]}.${onClik[1]}`).classList.add('difficulties__item-active')
 
-    whatTheBossNaw()
+
 }
 
 superEasy.addEventListener('click', BossTarget1);
@@ -149,7 +141,8 @@ function whatTheBossNaw() {
     whichCardNead(ancients[numberBoss])
 
 }
-
+const zames = document.querySelector('.zames')
+zames.addEventListener('click', whatTheBossNaw);
 
 
 
@@ -191,404 +184,490 @@ function whichCardNead(numberBoss) {
     const wichBlueCards = numberBoss.firstStage.blueCards + numberBoss.secondStage.blueCards + numberBoss.thirdStage.blueCards
     const wichBrownCards = numberBoss.firstStage.brownCards + numberBoss.secondStage.brownCards + numberBoss.thirdStage.brownCards
     const wichGreenCards = numberBoss.firstStage.greenCards + numberBoss.secondStage.greenCards + numberBoss.thirdStage.greenCards
-    getDifficulties(wichBlueCards, wichBrownCards, wichGreenCards)
-   
-}
+    deleteArrey()
 
-
-
-
-
-let arrEasyCardsBlue = []
-let arrNormalCardsBlue = []
-let arrHardCardsBlue = []
-
-let arrEasyCardsBrown = []
-let arrNormalCardsBrown = []
-let arrHardCardsBrown = []
-
-let arrEasyCardsGreen = []
-let arrNormalCardsGreen = []
-let arrHardCardsGreen = []
-
-function findBlueCards() {
-    for (let i = 0; i < cardsBlue.length; i++) {
-        if (cardsBlue[i].difficulty == 'easy') {
-            arrEasyCardsBlue.push(cardsBlue[i])
-        } else if (cardsBlue[i].difficulty == 'normal') {
-            arrNormalCardsBlue.push(cardsBlue[i])
-        } else if (cardsBlue[i].difficulty == 'hard') {
-            arrHardCardsBlue.push(cardsBlue[i])
-        }
+    function sayHi() {
+        getDifficulties(wichBlueCards, wichBrownCards, wichGreenCards)
     }
+
+    setTimeout(sayHi, 1000);
+
+
 }
-findBlueCards()
-
-function findBrownCards() {
-    for (let i = 0; i < cardsBrown.length; i++) {
-        if (cardsBrown[i].difficulty == 'easy') {
-            arrEasyCardsBrown.push(cardsBrown[i])
-        } else if (cardsBrown[i].difficulty == 'normal') {
-            arrNormalCardsBrown.push(cardsBrown[i])
-        } else if (cardsBrown[i].difficulty == 'hard') {
-            arrHardCardsBrown.push(cardsBrown[i])
-
-        }
-    }
-}
-findBrownCards()
-
-function findGreenCards() {
-    for (let i = 0; i < cardsGreen.length; i++) {
-        if (cardsGreen[i].difficulty == 'easy') {
-            arrEasyCardsGreen.push(cardsGreen[i])
-        } else if (cardsGreen[i].difficulty == 'normal') {
-            arrNormalCardsGreen.push(cardsGreen[i])
-        } else if (cardsGreen[i].difficulty == 'hard') {
-            arrHardCardsGreen.push(cardsGreen[i])
-
-        }
-    }
-}
-findGreenCards()
 
 
 
 function getDifficulties(wichBlueCards, wichBrownCards, wichGreenCards) {
     const whichLevelActiv = ((document.querySelector('.difficulties__item-active').className).split(' '))[0]
     if (whichLevelActiv == 'super-easy') {
-       showSuperEasyLevel(wichBlueCards, wichBrownCards, wichGreenCards)
-    }else if (whichLevelActiv == 'easy'){
+        showSuperEasyLevel(wichBlueCards, wichBrownCards, wichGreenCards)
+    } else if (whichLevelActiv == 'easy') {
         showEasyLevel(wichBlueCards, wichBrownCards, wichGreenCards)
-    }else if (whichLevelActiv == 'normal'){
+    } else if (whichLevelActiv == 'normal') {
         showNormalLevel(wichBlueCards, wichBrownCards, wichGreenCards)
-    }else if (whichLevelActiv == 'hard'){
+    } else if (whichLevelActiv == 'hard') {
         showHardLevel(wichBlueCards, wichBrownCards, wichGreenCards)
-    }else if (whichLevelActiv == 'super-hard'){
-    showSuperHardLevel(wichBlueCards, wichBrownCards, wichGreenCards)
+    } else if (whichLevelActiv == 'super-hard') {
+        showSuperHardLevel(wichBlueCards, wichBrownCards, wichGreenCards)
     }
 }
 
-let arrForSEasyLevelBlue = []
-let arrForSEasyLevelbrown = []
-let arrForSEasyLevelGreen = []
+let arrForBlue = []
+let arrForBrown = []
+let arrForGreen = []
 
-let arrForEasyLevelBlue = []
-let arrForEasyLevelbrown = []
-let arrForEasyLevelGreen = []
 
-let arrForNormelLevelBlue = []
-let arrForNormelLevelBrown = []
-let arrForNormelLevelGreen = []
 
-let arrForHardLevelBlue = []
-let arrForHardLevelBrown = []
-let arrForHardLevelGreen = []
 
-let arrForSHardLevelBlue = []
-let arrForSHardLevelBrown = []
-let arrForSHardLevelGreen = []
+function deleteArrey() {
+
+    // arrForBlue.splice(0, arrForBlue.length - 1)
+    // arrForBrown.splice(0, arrForBrown.length)
+    // arrForGreen.splice(0, arrForGreen.length)
+    console.log(arrForBlue.length);
+    for (let i = 0; i < arrForBlue.length; i++) {
+        arrForBlue.pop()
+        console.log(arrForBlue.length);
+    }
+    for (let i = 0; i < arrForBrown.length; i++) {
+        arrForBrown.pop()
+    }
+    for (let i = 0; i < arrForGreen.length; i++) {
+        arrForGreen.pop()
+    }
+    return
+}
+
+let whichHave
+
+
+function shawWhichCards(a, b) {
+    whichHave = 0
+    for (let i = 0; i < a.length; i++) {
+        if (a[i].difficulty == b) {
+            whichHave++
+
+        }
+    }
+
+    return whichHave;
+
+}
+
 
 //superEasyLevel
 function showSuperEasyLevel(wichBlueCards, wichBrownCards, wichGreenCards) {
-//blue
-    while (arrForSEasyLevelBlue.length < wichBlueCards) {
-        let random = Math.floor(Math.random() * (arrEasyCardsBlue.length - 1))
-        arrForSEasyLevelBlue.push(arrEasyCardsBlue[random])
-        arrEasyCardsBlue.splice(random, 1);
+    //blue
+    // cardsBlue
+    while (arrForBlue.length < wichBlueCards) {
+        let random = Math.floor(Math.random() * (cardsBlue.length))
+        if (cardsBlue[random].difficulty == 'easy') {
+            arrForBlue.push(cardsBlue[random])
+            cardsBlue.splice(random, 1);
+        }
+
+    }
+    console.log(cardsBlue.length);
+    //brown
+    // cardsBrown
+
+
+    function brown(wichBrownCards) {
+        shawWhichCards(cardsBrown, 'easy')
+        while (arrForBrown.length < wichBrownCards && arrForBrown.length < whichHave - 1) {
+            let random = Math.floor(Math.random() * (cardsBrown.length - 1))
+
+            if (cardsBrown[random].difficulty == 'easy') {
+                arrForBrown.push(cardsBrown[random])
+                cardsBrown.splice(random, 1);
+
+
+            }
+        }
+        if (arrForBrown.length != wichBrownCards) {
+
+            while (arrForBrown.length < wichBrownCards) {
+                let random = Math.floor(Math.random() * (cardsBrown.length - 1))
+
+                if (cardsBrown[random].difficulty == 'normal') {
+                    arrForBrown.push(cardsBrown[random])
+                    cardsBrown.splice(random, 1);
+                }
+            }
+        }
     }
 
-console.log(wichBrownCards);
-//brown
-while (arrForSEasyLevelbrown.length < wichBrownCards && arrEasyCardsBrown.length > 0) {
-    let random = Math.floor(Math.random() * (arrEasyCardsBrown.length - 1))
-    arrForSEasyLevelbrown.push(arrEasyCardsBrown[random])
-    arrEasyCardsBrown.splice(random, 1);
- }
-if (arrForSEasyLevelbrown.length != wichBrownCards){
-    
-    while (arrForSEasyLevelbrown.length < wichBrownCards) {
-        let random = Math.floor(Math.random() * (arrNormalCardsBrown.length - 1))
-        arrForSEasyLevelbrown.push(arrNormalCardsBrown[random])
-        arrNormalCardsBrown.splice(random, 1);
-     }
-}
-//Green
-while (arrForSEasyLevelGreen.length < wichGreenCards && arrEasyCardsGreen.length > 0) {
-    let random = Math.floor(Math.random() * (arrEasyCardsGreen.length - 1))
-    arrForSEasyLevelGreen.push(arrEasyCardsGreen[random])
-    arrEasyCardsGreen.splice(random, 1);
- }
-if (arrForSEasyLevelGreen.length != wichGreenCards){
-    
-    while (arrForSEasyLevelGreen.length < wichGreenCards) {
-        let random = Math.floor(Math.random() * (arrNormalCardsGreen.length - 1))
-        arrForSEasyLevelGreen.push(arrNormalCardsGreen[random])
-        arrNormalCardsGreen.splice(random, 1);
-     }
-}
+    brown(wichBrownCards)
+        //Green
 
+    function green(wichGreenCards) {
+        shawWhichCards(cardsGreen, 'easy')
+        while (arrForGreen.length < wichGreenCards && arrForGreen.length < whichHave) {
+            let random = Math.floor(Math.random() * (cardsGreen.length - 1))
+
+            if (cardsGreen[random].difficulty == 'easy') {
+                arrForGreen.push(cardsGreen[random])
+                cardsGreen.splice(random, 1);
+
+            }
+        }
+        if (arrForGreen.length != wichGreenCards) {
+
+            while (arrForGreen.length < wichGreenCards) {
+                let random = Math.floor(Math.random() * (cardsGreen.length - 1))
+                if (cardsGreen[random].difficulty == 'normal') {
+                    arrForGreen.push(cardsGreen[random])
+                    cardsGreen.splice(random, 1);
+                }
+            }
+        }
+    }
+    green(wichGreenCards)
+    console.log(arrForGreen);
 }
 
 //EasyLevel
-function showEasyLevel(wichBlueCards, wichBrownCards, wichGreenCards){
+function showEasyLevel(wichBlueCards, wichBrownCards, wichGreenCards) {
+
     //blue
+    // cardsBlue
 
-    function Blue(wichBlueCards){
-        let random
-        let activeArrey
+    function blue(wichBlueCards) {
+        while (arrForBlue.length < wichBlueCards) {
+            let random = Math.floor(Math.random() * (cardsBlue.length - 1))
+            console.log(random);
+            if (!(cardsBlue[random].difficulty == 'hard')) {
+                arrForBlue.push(cardsBlue[random])
+                cardsBlue.splice(random, 1);
+            }
 
-        while (arrForEasyLevelBlue.length < wichBlueCards) {
-
-        let choiceArr = Math.floor(Math.random() * (2))
-        if (choiceArr > 0){
-            random = Math.floor(Math.random() * arrEasyCardsBlue.length)
-            activeArrey = arrEasyCardsBlue
-        }else {
-            random = Math.floor(Math.random() * arrNormalCardsBlue.length)
-            activeArrey = arrNormalCardsBlue
         }
-
-    
-        arrForEasyLevelBlue.push(activeArrey[random])
-            activeArrey.splice(random, 1);
-        }
-        return arrForEasyLevelBlue
     }
-    Blue(wichBlueCards)
 
-    function Brown(wichBrownCards){
-        let random
-        let activeArrey
+    blue(wichBlueCards)
 
-        while (arrForEasyLevelbrown.length < wichBrownCards) {
+    //brown
+    // cardsBrown
 
-        let choiceArr = Math.floor(Math.random() * (2))
-        if (choiceArr > 0){
-            random = Math.floor(Math.random() * arrEasyCardsBrown.length)
-            activeArrey = arrEasyCardsBrown
-        }else {
-            random = Math.floor(Math.random() * arrNormalCardsBrown.length)
-            activeArrey = arrNormalCardsBrown
+    function brown(wichBrownCards) {
+        while (arrForBrown.length < wichBrownCards) {
+            let random = Math.floor(Math.random() * (cardsBrown.length))
+            if (!(cardsBrown[random].difficulty == 'hard')) {
+                arrForBrown.push(cardsBrown[random])
+                cardsBrown.splice(random, 1);
+            }
+
         }
-
-        if (activeArrey[random]){
-            arrForEasyLevelbrown.push(activeArrey[random])
-        }
-        
-        activeArrey.splice(random, 1);
-        }
-        return arrForEasyLevelbrown
     }
-    Brown(wichBrownCards)
-    
-    function green(wichGreenCards){
-        let random
-        let activeArrey
+    brown(wichBrownCards)
 
-        while (arrForEasyLevelGreen.length < wichGreenCards) {
+    //Green
+    // cardsGreen
+    function green(wichGreenCards) {
+        while (arrForGreen.length < wichGreenCards) {
+            let random = Math.floor(Math.random() * (cardsGreen.length))
+            if (!(cardsGreen[random].difficulty == 'hard')) {
+                arrForGreen.push(cardsGreen[random])
+                cardsGreen.splice(random, 1);
+            }
 
-        let choiceArr = Math.floor(Math.random() * (2))
-        if (choiceArr > 0){
-            random = Math.floor(Math.random() * arrEasyCardsGreen.length)
-            activeArrey = arrEasyCardsGreen
-        }else {
-            random = Math.floor(Math.random() * arrNormalCardsGreen.length)
-            activeArrey = arrNormalCardsGreen
         }
-
-        if (activeArrey[random]){
-            arrForEasyLevelGreen.push(activeArrey[random])
-        }
-        
-        activeArrey.splice(random, 1);
-        }
-        return arrForEasyLevelGreen
     }
     green(wichGreenCards)
+
+
 
 }
 
 //normal
-function showNormalLevel(wichBlueCards, wichBrownCards, wichGreenCards){
-    
-    //  blue
-    
-     function Blue(wichBlueCards){
-        let random
-        let activeArrey
-    
-        while (arrForNormelLevelBlue.length < wichBlueCards) {
-    
-        let choiceArr = Math.floor(Math.random() * (3))
-        if (choiceArr == 0){
-            random = Math.floor(Math.random() * arrEasyCardsBlue.length)
-            activeArrey = arrEasyCardsBlue
-        }else if (choiceArr == 1){ 
-            random = Math.floor(Math.random() * arrNormalCardsBlue.length)
-            activeArrey = arrNormalCardsBlue
-        }else if (choiceArr == 2){ {
-            random = Math.floor(Math.random() * arrHardCardsBlue.length)
-            activeArrey = arrHardCardsBlue
+function showNormalLevel(wichBlueCards, wichBrownCards, wichGreenCards) {
+    //blue
+    // cardsBlue
+
+    function blue(wichBlueCards) {
+        while (arrForBlue.length < wichBlueCards) {
+            let random = Math.floor(Math.random() * (cardsBlue.length - 1))
+            console.log(random);
+            if (cardsBlue[random].difficulty) {
+                arrForBlue.push(cardsBlue[random])
+                cardsBlue.splice(random, 1);
+            }
+
         }
-    
-    
-        arrForNormelLevelBlue.push(activeArrey[random])
-            activeArrey.splice(random, 1);
-        }
-        return arrForNormelLevelBlue
     }
-}
-    Blue(wichBlueCards)
-    
-    // Brown
-    function Brown(wichBrownCards){
-        let random
-        let activeArrey
-    
-        while (arrForNormelLevelBrown.length < wichBrownCards) {
-    
-        let choiceArr = Math.floor(Math.random() * (3))
-        
-        if (choiceArr == 0){
-            random = Math.floor(Math.random() * arrEasyCardsBrown.length)
-            activeArrey = arrEasyCardsBrown
-        }else if(choiceArr == 1) {
-            random = Math.floor(Math.random() * arrNormalCardsBrown.length)
-            activeArrey = arrNormalCardsBrown
-        }else if(choiceArr == 2) {
-            random = Math.floor(Math.random() * arrHardCardsBlue.length)
-            activeArrey = arrHardCardsBlue
+
+    blue(wichBlueCards)
+
+    //brown
+    // cardsBrown
+
+    function brown(wichBrownCards) {
+        while (arrForBrown.length < wichBrownCards) {
+            let random = Math.floor(Math.random() * (cardsBrown.length))
+            if (cardsBrown[random].difficulty) {
+                arrForBrown.push(cardsBrown[random])
+                cardsBrown.splice(random, 1);
+            }
+
         }
-    
-        if (activeArrey[random]){
-            arrForNormelLevelBrown.push(activeArrey[random])
-        }else continue 
-        
-        activeArrey.splice(random, 1);
-        }
-        return arrForNormelLevelBrown
     }
-    Brown(wichBrownCards)
-    
-    // Green
-    function green(wichGreenCards){
-        let random
-        let activeArrey
-     
-       
-        while (arrForNormelLevelGreen.length < wichGreenCards) {
-    
-            let choiceArr = Math.floor(Math.random() * (3))
-        console.log(choiceArr);
-        if (choiceArr == 0){
-            random = Math.floor(Math.random() * arrEasyCardsGreen.length)
-            activeArrey = arrEasyCardsGreen
-        }else if (choiceArr == 1) {
-            random = Math.floor(Math.random() * arrNormalCardsGreen.length)
-            activeArrey = arrNormalCardsGreen
-        }else if (choiceArr == 2) {
-            random = Math.floor(Math.random() * arrHardCardsBlue.length)
-            activeArrey = arrHardCardsBlue
+    brown(wichBrownCards)
+
+    //Green
+    // cardsGreen
+    function green(wichGreenCards) {
+        while (arrForGreen.length < wichGreenCards) {
+            let random = Math.floor(Math.random() * (cardsGreen.length))
+            if (cardsGreen[random].difficulty) {
+                arrForGreen.push(cardsGreen[random])
+                cardsGreen.splice(random, 1);
+            }
+
         }
-    
-        if (activeArrey[random]){
-            arrForNormelLevelGreen.push(activeArrey[random])
-        }else continue 
-        
-        activeArrey.splice(random, 1);
-        }
-        return arrForNormelLevelGreen
     }
     green(wichGreenCards)
-}
 
-let allArrey = []
-
-function ollarr() {
-    for(let i = 0; i < cardsBlue.length ; i++){
-        allArrey.push(cardsBlue[i])
-        allArrey.push(cardsGreen[i])
-        allArrey.push(cardsBrown[i])
-    }
 }
-ollarr()
 
 //hard
-function showHardLevel(wichBlueCards, wichBrownCards, wichGreenCards){
+function showHardLevel(wichBlueCards, wichBrownCards, wichGreenCards) {
 
-function blue (wichBlueCards) {
-    for (let i = 0; arrForHardLevelBlue.length < wichBlueCards; i++){
-       let random = Math.floor(Math.random() * allArrey.length)
-        if (!(allArrey[random].difficulty == 'easy') && allArrey[random].color == 'blue'){
-            arrForHardLevelBlue.push(allArrey[random]) 
-        }else continue
-        
-    }
-}
-blue(wichBlueCards)
-function green (wichGreenCards) {
-    for (let i = 0; arrForHardLevelGreen.length < wichGreenCards; i++){
-       let random = Math.floor(Math.random() * allArrey.length)
-        if (!(allArrey[random].difficulty == 'easy') && allArrey[random].color == 'green'){
-            arrForHardLevelGreen.push(allArrey[random]) 
-        }else continue
-        
-    }
-}
-green(wichGreenCards)
-function brown (wichBrownCards) {
-    for (let i = 0; arrForHardLevelBrown.length < wichBrownCards; i++){
-       let random = Math.floor(Math.random() * allArrey.length)
-        if (!(allArrey[random].difficulty == 'easy') && allArrey[random].color == 'brown'){
-            arrForHardLevelBrown.push(allArrey[random]) 
-        }else continue
-        
-    }
-}
-brown(wichBrownCards)
-}
-
-function showSuperHardLevel(wichBlueCards, wichBrownCards, wichGreenCards){
     //blue
-    function blue(){
-        while (arrForSHardLevelBlue.length < wichBlueCards && arrHardCardsBlue.length > 0){
-        let random = Math.floor(Math.random() * arrHardCardsBlue.length)
-        arrForSHardLevelBlue.push(arrHardCardsBlue[random])
-        arrHardCardsBlue.splice(arrHardCardsBlue[random], 1)
+    // cardsBlue
 
-    } }
-    blue()
-//Brown
-function brown(){
-    while (arrForSHardLevelBrown.length < wichBrownCards && arrHardCardsBrown.length > 0){
-    let random = Math.floor(Math.random() * arrHardCardsBrown.length)
-    arrForSHardLevelBrown.push(arrHardCardsBrown[random])
-    arrHardCardsBrown.splice(arrHardCardsBrown[random], 1)
+    function blue(wichBlueCards) {
+        while (arrForBlue.length < wichBlueCards) {
+            let random = Math.floor(Math.random() * (cardsBlue.length - 1))
+            console.log(random);
+            if (!(cardsBlue[random].difficulty == 'easy')) {
+                arrForBlue.push(cardsBlue[random])
+                cardsBlue.splice(random, 1);
+            }
+
+        }
+    }
+
+    blue(wichBlueCards)
+
+    //brown
+    // cardsBrown
+
+    function brown(wichBrownCards) {
+        while (arrForBrown.length < wichBrownCards) {
+            let random = Math.floor(Math.random() * (cardsBrown.length))
+            if (!(cardsBrown[random].difficulty == 'easy')) {
+                arrForBrown.push(cardsBrown[random])
+                cardsBrown.splice(random, 1);
+            }
+
+        }
+    }
+    brown(wichBrownCards)
+
+    //Green
+    // cardsGreen
+    function green(wichGreenCards) {
+        while (arrForGreen.length < wichGreenCards) {
+            let random = Math.floor(Math.random() * (cardsGreen.length))
+            if (!(cardsGreen[random].difficulty == 'easy')) {
+                arrForGreen.push(cardsGreen[random])
+                cardsGreen.splice(random, 1);
+            }
+
+        }
+    }
+    green(wichGreenCards)
 
 }
-while (arrForSHardLevelBrown.length < wichBrownCards ){
-    
-    let random = Math.floor(Math.random() * arrNormalCardsBrown.length)
-    arrForSHardLevelBrown.push(arrNormalCardsBrown[random])
-    arrNormalCardsBrown.splice(arrNormalCardsBrown[random], 1)
-}}
-brown()
-//green
-function green(){
-    while (arrForSHardLevelGreen.length < wichGreenCards && arrHardCardsGreen.length > 0){
-    let random = Math.floor(Math.random() * arrHardCardsGreen.length)
-    arrForSHardLevelGreen.push(arrHardCardsGreen[random])
-    arrHardCardsGreen.splice(arrHardCardsGreen[random], 1)
+//SuperHard
+function showSuperHardLevel(wichBlueCards, wichBrownCards, wichGreenCards) {
+    //blue
+    // cardsBlue
+    while (arrForBlue.length < wichBlueCards) {
+        let random = Math.floor(Math.random() * (cardsBlue.length))
+        if (cardsBlue[random].difficulty == 'hard') {
+            arrForBlue.push(cardsBlue[random])
+            cardsBlue.splice(random, 1);
+        }
+
+    }
+
+    //brown
+    // cardsBrown
+
+    function brown(wichBrownCards) {
+        shawWhichCards(cardsBrown, 'hard')
+        while (arrForBrown.length < wichBrownCards && arrForBrown.length < whichHave) {
+            let random = Math.floor(Math.random() * (cardsBrown.length - 1))
+
+            if (cardsBrown[random].difficulty == 'hard') {
+                arrForBrown.push(cardsBrown[random])
+                cardsBrown.splice(random, 1);
+
+            }
+        }
+        if (arrForBrown.length != wichBrownCards) {
+
+            while (arrForBrown.length < wichBrownCards) {
+                let random = Math.floor(Math.random() * (cardsBrown.length - 1))
+                if (cardsBrown[random].difficulty == 'normal') {
+                    arrForBrown.push(cardsBrown[random])
+                    cardsBrown.splice(random, 1);
+                }
+            }
+        }
+    }
+    console.log(arrForBrown);
+    brown(wichBrownCards)
+        //     //Green
+
+    function green(wichGreenCards) {
+        console.log(arrForGreen.length);
+        shawWhichCards(cardsGreen, 'hard')
+        while (arrForGreen.length < wichGreenCards && arrForGreen.length < whichHave) {
+            let random = Math.floor(Math.random() * (cardsGreen.length - 1))
+            if (cardsGreen[random].difficulty == "hard") {
+                arrForGreen.push(cardsGreen[random])
+                cardsGreen.splice(random, 1);
+
+            }
+        }
+
+        if (arrForGreen.length != wichGreenCards) {
+            while (arrForGreen.length < wichGreenCards) {
+                let random = Math.floor(Math.random() * (cardsGreen.length - 1))
+                if (cardsGreen[random].difficulty == 'normal') {
+                    arrForGreen.push(cardsGreen[random])
+                    cardsGreen.splice(random, 1);
+                }
+            }
+        }
+    }
+    green(wichGreenCards)
+
 
 }
-while (arrForSHardLevelGreen.length < wichGreenCards ){
-    
-    let random = Math.floor(Math.random() * arrNormalCardsGreen.length)
-    arrForSHardLevelGreen.push(arrNormalCardsGreen[random])
-    arrNormalCardsGreen.splice(arrNormalCardsGreen[random], 1)
-}}
-green()
+
+
+
+let GlobalArrey = []
+
+const mixArrey = {
+    data: [],
+    add: function(addData) {
+        this.data.push(addData.cardFace)
+    },
+    del: function() {
+        return this.data.pop()
+    },
+
 
 }
-console.log(arrForSHardLevelGreen);
+
+
+const ImgCards = document.querySelector('.ImgCards')
+const ImgCard = document.querySelector('.ImgCard')
+
+
+
+function shawImeges() {
+    const img = new Image();
+    img.src = './assets/mythicCardBackground.png'
+    img.onload = () => {
+        ImgCards.style.backgroundImage = `url("${mixArrey.del()}")`
+
+    };
+}
+ImgCard.addEventListener('click', shawImeges);
+// const zames = document.querySelector('.zames')
+
+function zamesC() {
+    let numberBoss
+    const nameBoss = ((document.querySelector('.boss__imem-active').className).split(' '))[0]
+    nameBoss == 'azathoth' ?
+        numberBoss = 0 : nameBoss == 'cthulthu' ?
+        numberBoss = 1 : nameBoss == 'iogSothoth' ?
+        numberBoss = 2 : nameBoss == 'shubNiggurath' ? numberBoss = 3 : console.log(error)
+
+    let firstStage = ancients[numberBoss].firstStage
+    let secondStage = ancients[numberBoss].secondStage
+    let thirdStage = ancients[numberBoss].thirdStage
+
+    asss(firstStage)
+    asss(secondStage)
+    asss(thirdStage)
+
+}
+
+// zames.addEventListener('click', zamesC);
+
+function asss(Stage) {
+    let arrBlue = []
+    let arrbrawn = []
+    let arrGreen = []
+    let GlobalArrey = []
+
+    function blueCards(blue) {
+        while (arrBlue.length < blue) {
+            let random = Math.floor(Math.random() * arrForSEasyLevelBlue.length)
+            if (arrForSEasyLevelBlue[random]) {
+                arrBlue.push(arrForSEasyLevelBlue[random])
+                arrForSEasyLevelBlue.splice(random, 1)
+            }
+        }
+        return symaaArr(arrBlue)
+    }
+    blueCards(Stage.blueCards)
+
+    function brownCards(brown) {
+        while (arrbrawn.length < brown) {
+            let random = Math.floor(Math.random() * arrForSEasyLevelbrown.length)
+            if (arrForSEasyLevelbrown[random]) {
+                arrbrawn.push(arrForSEasyLevelbrown[random])
+                arrForSEasyLevelbrown.splice(random, 1)
+            }
+        }
+        return symaaArr(arrbrawn)
+    }
+    brownCards(Stage.brownCards)
+
+    function greenCards(green) {
+        while (arrGreen.length < green) {
+            let random = Math.floor(Math.random() * arrForSEasyLevelGreen.length)
+            if (arrForSEasyLevelGreen[random]) {
+                arrGreen.push(arrForSEasyLevelGreen[random])
+                arrForSEasyLevelGreen.splice(random, 1)
+            }
+        }
+        return symaaArr(arrGreen)
+    }
+    greenCards(Stage.greenCards)
+    console.log(arrGreen);
+
+    function symaaArr(arr) {
+        for (let i = 0; i < arr.length; i++) {
+            GlobalArrey.push(arr[i])
+        }
+    }
+    console.log(GlobalArrey);
+    return zabros(GlobalArrey)
+
+
+}
+
+function zabros(GlobalArrey) {
+
+    while (0 < GlobalArrey.length) {
+        let random = Math.floor(Math.random() * GlobalArrey.length)
+        if (GlobalArrey[random]) {
+            mixArrey.add(GlobalArrey[random])
+            GlobalArrey.splice(random, 1)
+        }
+
+    }
+    if (GlobalArrey.length == 0) {
+        mixArrey.add(' ')
+    }
+    return asss
+}
+console.log(mixArrey);

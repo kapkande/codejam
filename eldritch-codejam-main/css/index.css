@@ -1,5 +1,7 @@
 .body {
     background-image: url(../assets/home.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .wrap {
@@ -27,6 +29,7 @@
 
 .difficulties {
     display: none;
+    margin: 2%;
 }
 
 .difficulties-active {
@@ -91,4 +94,29 @@
 
 .cardsBlock {
     margin-left: 1%;
+}
+
+.img {
+    display: flex;
+}
+
+.ImgCard {
+    background-image: url('../assets/mythicCardBackground.png');
+    width: 150px;
+    height: 200px;
+}
+
+.ImgCards {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 150px;
+    height: 200px;
+}
+
+.zames {
+    font-size: 20px;
+    color: aliceblue;
+    background-color: rgb(64, 73, 73);
+    margin: 2%;
+    cursor: pointer;
 }
